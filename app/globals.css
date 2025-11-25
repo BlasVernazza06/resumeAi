@@ -1,26 +1,391 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* Light Mode (Default) */
+@theme {
+  --color-background: oklch(100% 0 0);
+  --color-foreground: oklch(24% 0.028 257);
+
+  --color-card: oklch(100% 0 0);
+  --color-card-foreground: oklch(24% 0.028 257);
+
+  --color-popover: oklch(100% 0 0);
+  --color-popover-foreground: oklch(24% 0.028 257);
+
+  --color-primary: oklch(64% 0.15 217);
+  --color-primary-foreground: oklch(100% 0 0);
+
+  --color-secondary: oklch(96% 0.005 257);
+  --color-secondary-foreground: oklch(24% 0.028 257);
+
+  --color-muted: oklch(96% 0.005 257);
+  --color-muted-foreground: oklch(58% 0.015 257);
+
+  --color-accent: oklch(64% 0.15 217);
+  --color-accent-foreground: oklch(100% 0 0);
+
+  --color-success: oklch(56% 0.15 145);
+  --color-success-foreground: oklch(100% 0 0);
+
+  --color-warning: oklch(68% 0.17 65);
+  --color-warning-foreground: oklch(100% 0 0);
+
+  --color-destructive: oklch(62% 0.22 25);
+  --color-destructive-foreground: oklch(100% 0 0);
+
+  --color-border: oklch(89% 0.008 257);
+  --color-input: oklch(89% 0.008 257);
+  --color-ring: oklch(64% 0.15 217);
+
+  --color-surface-1: oklch(98% 0 0);
+  --color-surface-2: oklch(96% 0.005 257);
+  --color-surface-3: oklch(89% 0.008 257);
+
+  --radius: 0.75rem;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+/* Dark Mode (if needed in the future, add .dark class to html) */
+.dark {
+  --color-background: oklch(18% 0.028 257);
+  --color-foreground: oklch(98% 0.005 257);
+
+  --color-card: oklch(21% 0.028 257);
+  --color-card-foreground: oklch(98% 0.005 257);
+
+  --color-popover: oklch(21% 0.028 257);
+  --color-popover-foreground: oklch(98% 0.005 257);
+
+  --color-primary: oklch(64% 0.15 217);
+  --color-primary-foreground: oklch(18% 0.028 257);
+
+  --color-secondary: oklch(28% 0.018 257);
+  --color-secondary-foreground: oklch(98% 0.005 257);
+
+  --color-muted: oklch(28% 0.018 257);
+  --color-muted-foreground: oklch(72% 0.012 257);
+
+  --color-accent: oklch(64% 0.15 217);
+  --color-accent-foreground: oklch(18% 0.028 257);
+
+  --color-success: oklch(56% 0.15 145);
+  --color-success-foreground: oklch(100% 0 0);
+
+  --color-warning: oklch(68% 0.17 65);
+  --color-warning-foreground: oklch(100% 0 0);
+
+  --color-destructive: oklch(42% 0.16 25);
+  --color-destructive-foreground: oklch(98% 0.005 257);
+
+  --color-border: oklch(28% 0.018 257);
+  --color-input: oklch(28% 0.018 257);
+  --color-ring: oklch(64% 0.15 217);
+
+  --color-surface-1: oklch(21% 0.028 257);
+  --color-surface-2: oklch(24% 0.021 257);
+  --color-surface-3: oklch(28% 0.018 257);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* Base Styles */
+* {
+  border-color: var(--color-border);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--color-background);
+  color: var(--color-foreground);
+  font-feature-settings: "rlig" 1, "calt" 1;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 600;
+  letter-spacing: -0.025em;
+}
+
+h1 {
+  font-size: 2.25rem;
+  line-height: 1.1;
+}
+
+@media (min-width: 768px) {
+  h1 {
+    font-size: 3rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  h1 {
+    font-size: 3.75rem;
+  }
+}
+
+h2 {
+  font-size: 1.875rem;
+  line-height: 1.2;
+}
+
+@media (min-width: 768px) {
+  h2 {
+    font-size: 2.25rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  h2 {
+    font-size: 3rem;
+  }
+}
+
+h3 {
+  font-size: 1.5rem;
+  line-height: 1.3;
+}
+
+@media (min-width: 768px) {
+  h3 {
+    font-size: 1.875rem;
+  }
+}
+
+h4 {
+  font-size: 1.25rem;
+  line-height: 1.4;
+}
+
+@media (min-width: 768px) {
+  h4 {
+    font-size: 1.5rem;
+  }
+}
+
+p {
+  line-height: 1.7;
+}
+
+/* Custom Utilities */
+.ai-gradient {
+  background: linear-gradient(to bottom right, var(--color-primary), oklch(66% 0.19 252));
+}
+
+.ai-gradient-text {
+  background: linear-gradient(to bottom right, var(--color-primary), oklch(66% 0.19 252));
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  display: inline-block;
+}
+
+.glass-effect {
+  background-color: color-mix(in srgb, var(--color-background) 80%, transparent);
+  backdrop-filter: blur(24px);
+  border: 1px solid color-mix(in srgb, var(--color-border) 50%, transparent);
+}
+
+.card-hover {
+  transition: all 300ms;
+}
+
+.card-hover:hover {
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+  transform: translateY(-0.25rem);
+}
+
+.surface-1 {
+  background-color: var(--color-surface-1);
+}
+
+.surface-2 {
+  background-color: var(--color-surface-2);
+}
+
+.surface-3 {
+  background-color: var(--color-surface-3);
+}
+
+.animate-gradient {
+  animation: gradient 8s ease infinite;
+  background-size: 200% 200%;
+}
+
+@keyframes gradient {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.glow-effect {
+  box-shadow: 0 0 20px rgba(59, 130, 246, 0.15);
+}
+
+.dark .glow-effect {
+  box-shadow: 0 0 30px rgba(59, 130, 246, 0.25);
+}
+
+.fade-in {
+  animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.shimmer {
+  position: relative;
+  overflow: hidden;
+}
+
+.shimmer::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  transform: translateX(-100%);
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0,
+    rgba(255, 255, 255, 0.1) 20%,
+    rgba(255, 255, 255, 0.3) 60%,
+    rgba(255, 255, 255, 0)
+  );
+  animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/* Component Classes */
+.container-custom {
+  max-width: 80rem;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+@media (min-width: 640px) {
+  .container-custom {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container-custom {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+
+.section-spacing {
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+}
+
+@media (min-width: 768px) {
+  .section-spacing {
+    padding-top: 6rem;
+    padding-bottom: 6rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .section-spacing {
+    padding-top: 8rem;
+    padding-bottom: 8rem;
+  }
+}
+
+.btn-primary {
+  background-color: var(--color-primary);
+  color: var(--color-primary-foreground);
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  font-weight: 500;
+  transition: all 200ms;
+  box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+}
+
+.btn-primary:hover {
+  background-color: color-mix(in srgb, var(--color-primary) 90%, black);
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+}
+
+.btn-secondary {
+  background-color: var(--color-secondary);
+  color: var(--color-secondary-foreground);
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  font-weight: 500;
+  transition: all 200ms;
+}
+
+.btn-secondary:hover {
+  background-color: color-mix(in srgb, var(--color-secondary) 80%, black);
+}
+
+.btn-ghost {
+  color: var(--color-foreground);
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  font-weight: 500;
+  transition: all 200ms;
+}
+
+.btn-ghost:hover {
+  background-color: var(--color-secondary);
+}
+
+.input-custom {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+  border: 1px solid var(--color-input);
+  background-color: var(--color-background);
+  transition: all 200ms;
+}
+
+.input-custom:focus {
+  outline: none;
+  ring: 2px;
+  ring-color: var(--color-ring);
+  border-color: transparent;
+}
+
+.card-custom {
+  background-color: var(--color-card);
+  border: 1px solid var(--color-border);
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+  box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes bounceIn {
+  0% { opacity: 0; transform: scale(0); }
+  50% { transform: scale(1.05); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+@keyframes spinAndFade {
+  0% { opacity: 0; transform: rotate(0deg); }
+  50% { opacity: 1; transform: rotate(180deg); }
+  100% { opacity: 1; transform: rotate(360deg); }
 }
