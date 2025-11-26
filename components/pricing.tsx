@@ -3,7 +3,7 @@ import { useState } from "react";
 import PricingCards from "@/app/components/pricing-cards";
 
 export default function Pricing() {
-    const [active, setActive] = useState("mensual");
+    const [active, setActive] = useState<string>("mensual");
 
     return (
         <div id="pricing" className="w-full flex flex-col items-center justify-center mt-40">

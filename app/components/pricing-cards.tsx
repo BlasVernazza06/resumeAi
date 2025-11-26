@@ -96,7 +96,7 @@ export default function PricingCards({billing} : {billing: string}) {
                         {/* Verificar como producir el href.*/}
                         {/* Lo ideal seria, poner una instancia de incio del pago antes.*/}
                         <Link
-                            href={`/checkout/priceId=${plan.id}`}
+                            href={`/checkout?priceId=${plan.id}`}
                         >
                             <button
                                 className={`w-full py-3 px-6 rounded-lg transition-all duration-200 ${

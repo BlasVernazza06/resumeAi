@@ -1,9 +1,10 @@
 // app/components/header.tsx  (SERVER COMPONENT)
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, User } from "lucide-react";
 import Link from "next/link";
 import MobileMenuButton from "./mobile-menu-button";
 import MobileMenu from "./mobile-menu";
 import Logo from "./logo";
+import { Button } from "./ui/button";
 
 const navLinks = [
   { link: "/#features", label: "Features" },
@@ -31,13 +32,12 @@ export default function Header() {
         </div>
 
         {/* Try button */}
-        <Link 
-          href="/checkout"
-          className="hidden sm:flex group transition-all duration-300 cursor-pointer items-center gap-2 btn-primary px-3 py-2 rounded-lg"
+        <Button 
+          href={"/checkout"}
+          className="hidden sm:flex group transition-all duration-300 cursor-pointer items-center rounded-full"
         >
-          <p className="text-white text-sm">Try resumeAi</p>
-          <ArrowRight className="size-5 sm:size-4 text-white group-hover:translate-x-1 transition-all duration-200" />
-        </Link>
+          <User className="size-5"/>
+        </Button>
 
         {/* Mobile button (client component) */}
         <div className="sm:hidden">

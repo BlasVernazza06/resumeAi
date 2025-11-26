@@ -21,7 +21,7 @@ export function LoginForm({
         <div className="flex flex-col items-center gap-1 text-center">
           <div className="flex items-center text-2xl font-bold">
             <span>
-              Accede a 
+              Acceder a la App
             </span>
           </div>
           <p className="text-muted-foreground text-sm text-balance">

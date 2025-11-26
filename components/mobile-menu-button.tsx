@@ -10,7 +10,7 @@ export default function MobileMenuButton() {
   return (
     <button
       onClick={() => setOpen(!open)}
-      className="p-2 hover:bg-gray-100 rounded-lg transition-colors border border-gray-200"
+      className="p-2 bg-white shadow-lg hover:bg-gray-100 rounded-lg transition-colors border border-gray-200"
       aria-label="Abrir menú"
     >
       <Menu className="size-5 text-gray-700" />
