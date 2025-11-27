@@ -8,7 +8,7 @@ import {
   FieldSeparator,
 } from "@/components/ui/field"
 import { Input } from "@/components/ui/input"
-import Logo from "./logo"
+import Logo from "../../../components/logo"
 import { GitHubLight, Google } from "@ridemountainpig/svgl-react"
 
 export function LoginForm({

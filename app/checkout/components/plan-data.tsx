@@ -2,7 +2,7 @@ import { Separator } from "@/components/ui/separator";
 import { Check, Dot, Shield, ShieldCheck } from "lucide-react";
 
 interface PlanDataType {
-    planId: string
+    planId?: string
 }
 
 export default async function PlanData({planId}: PlanDataType) {

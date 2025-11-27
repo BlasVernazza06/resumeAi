@@ -1,5 +1,5 @@
 // app/components/header.tsx  (SERVER COMPONENT)
-import { ArrowRight, User } from "lucide-react";
+import { ArrowRight, Zap } from "lucide-react";
 import Link from "next/link";
 import MobileMenuButton from "./mobile-menu-button";
 import MobileMenu from "./mobile-menu";
@@ -24,20 +24,23 @@ export default function Header() {
             <Link
               key={index}
               href={link.link}
-              className="hover:bg-muted cursor-pointer rounded-lg p-2 transition-colors"
+              className="hover:bg-gray-200 border border-transparent hover:border-gray-300 duration-150 cursor-pointer rounded-lg p-2 transition-colors"
             >
               <span>{link.label}</span>
             </Link>
           ))}
         </div>
 
-        {/* Try button */}
-        <Button 
-          href={"/checkout"}
-          className="hidden sm:flex group transition-all duration-300 cursor-pointer items-center rounded-full"
-        >
-          <User className="size-5"/>
-        </Button>
+        {/* CTA Button */}
+        <Link href="/checkout" className="hidden sm:block">
+          <Button 
+            className="group transition-all duration-300 cursor-pointer items-center rounded-full gap-2 flex"
+          >
+            <Zap className="size-4"/>
+            <span>Comenzar</span>
+            <ArrowRight className="size-4 group-hover:translate-x-1 transition-transform"/>
+          </Button>
+        </Link>
 
         {/* Mobile button (client component) */}
         <div className="sm:hidden">
